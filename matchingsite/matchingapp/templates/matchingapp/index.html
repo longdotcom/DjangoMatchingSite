@@ -1,0 +1,76 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+    background-image: url('https://www.w3schools.com/w3images/forestbridge.jpg');
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+    color:white;
+}
+#loginbtn{
+  color:black;
+}
+#username, #password{
+  color:black;
+}
+</style>
+
+</head>
+
+  <body>
+  <div class="  bgimg w3-display-container w3-animate-opacity w3-text-white">
+    <div class="container w3-text-white">
+
+      <div class="alert alert-warning alert-dismissible fade in">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Important!</strong> If you continue browsing this website you agree to cookies being stored on your device
+      </div>
+    &nbsp;
+        <p>
+    Welcome to HobbyLobby, where we will match you to other members depending on the hobbies you like.<br>
+    The more hobbies you have in common with another member the higher their suitability to you will be.
+    <p>
+    {% if success %}<h3>{{ success }}, {{ email }} </h3><p>{% else %} {% endif %}
+
+    Existing users login:
+    <br>
+
+
+    <form id="login" action="/login/" method="POST">
+        {% csrf_token %}
+        <input id="username" type="text" name="username" placeholder="Username"><br>
+        <input id="password" type="password" name="password" placeholder="Password"><br>
+        <input id="loginbtn" type="submit" value="Login">
+      </form>&nbsp;
+      <p>
+      <a href="/forgotten/" >Forgotten password</a>
+      <p>
+    New users sign up here:<br>
+    <a href="/signup/" data-toggle="tooltip" title="You can do it!" data-placement="right">Sign Up</a>
+
+
+
+    </div>
+  </div>
+    <script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
+  </body>
+
+
+</html>

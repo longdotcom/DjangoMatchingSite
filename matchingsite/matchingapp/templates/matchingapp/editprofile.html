@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      &nbsp;<p>
+        <b>{{ username }}</b>. Enter your details to edit your profile:<p>
+<div class="form-group">
+    <form id="editprofile" action="/editprofile/" method="POST" enctype='multipart/form-data'>
+        {% csrf_token %}
+        First Name:<br>
+        <input id="firstname" type="text" name="firstname"><p>
+        Last Name:<br>
+        <input id="lastname" type="text" name="lastname"><p>
+        Email:<br>
+        <input id="email" type="email" name="email"><p>
+        Password:<br>
+        <input id="password" type="password" name="password"><p>
+        Profile text:<br>
+        <input id="profiletext" type="textarea" rows="5" name="profiletext"><p>
+        Profile image:<br>
+        <input type="file" name="imgfile" id="imgfile"/><p>
+        <input id="editbtn" type="submit" value="Save">
+        </form>
+        <p>
+
+</div>
+  <a href="/deleteaccount/" name="deleteaccount">Delete account</a><p>
+  <a href="/loggedinreturn/" class="button">Go back</a>
+
+      </div>
+
+  </body>
+
+</html>

@@ -1,0 +1,19 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container bgimg">
+    &nbsp;<p>
+  Enter your username below and a new password will be sent to the email address associated with the account<p>
+  <form id="forgottenpassword" action="/forgottenpassword/" method="POST">
+      {% csrf_token %}
+      <input id="username" type="text" name="username" placeholder="Username"><br>
+      <input id="forgotbtn" type="submit" value="Reset">
+    </form>
+</div>
+</body>
+</html>

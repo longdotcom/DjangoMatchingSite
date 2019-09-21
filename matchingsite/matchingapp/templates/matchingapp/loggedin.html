@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      &nbsp;<p>
+    <h1><b>{{ username }}</b> {% if success %}{{ success }}</h1>{% else %}<h1>  you are now signed in.</h1>{% endif %}
+    <p>
+    <a href="{% url 'profile' %}?view={{ username }}">Click here to view your profile</a>
+    <p>
+    <p>View our matching recommendations of people with similar hobbies to yourself
+    <p>
+    <a href="/matched/" class="button">View matches</a>
+    <p>
+    <a href ="/editprofilerequest/">Edit profile</a>
+
+    <p>
+    <a href="/logout/" class="button">Log Out</a>
+    <p>
+    <a href="/deleteaccount/" name="deleteaccount">Delete account</a>  
+
+  </div>
+  </body>
+
+</html>

@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      &nbsp;<p>
+    Welcome {{ username }}
+    <p>
+    Below are users who have matched with yourself, ranked in descending order by the amount of hobbies they have in common.
+    <p>
+    <div id="update">
+    <div class="table-responsive">
+    <div id="theTable">
+    <table class= "table table-striped table-bordered table-hover" width = "60%">
+      <tr>
+        <th>Username</th>
+        <th>Gender</th>
+        <th>Age</th>
+      </tr>
+
+      {% if matched %}
+      {% for member in matched %}
+      <tr id ="toDelete">
+        <td><a href="{% url 'profile' %}?view={{ member.username }}">{{ member.username }}</td>
+        <td id ="{{ member.username }}">{{ member.gender }}</td>
+        <td>{{ member.dob|timesince }}</td>
+      </tr>
+      {% endfor %}
+
+    </div>
+
+    </table>
+
+
+      {% else %}
+
+      <tr>
+        <td>Nobody matches with you :(</td>
+      </tr>
+    
+    </table>
+
+  </div>
+</div>
+  </div>
+    {% endif %}
+
+  </div>
+
+  <form>
+    {% csrf_token %}
+    <input class="gender" type="radio" name="gender" value="M" checked> Male
+    <input class="gender" type="radio" name="gender" value="F"> Female<p>
+    <input id="updatebutton" type="button" value="Update">
+  </form>
+  <p>
+  <a href ="/editprofilerequest/">Edit profile</a>
+  <p>
+  <a href="/logout/" class="button">Log Out</a>
+  <p>
+  <a href="/loggedinreturn/" class="button">Go back</a>
+
+  </body>
+
+<script>
+
+  $("#updatebutton").click(function () {
+    var gender = $('input[name=gender]:checked').val();
+    // data.append('gender', gender);
+    // data.append('csrfmiddlewaretoken', $('input[name=csrfmiddlewaretoken]').val());
+    //console.log(gender);
+
+  $.ajax({
+    url: '/update/',
+    type: 'POST',
+    dataType: 'JSON',
+    data: {
+    'gender':gender,
+     csrfmiddlewaretoken: '{{ csrf_token }}',
+  },
+
+    success: function (data) {
+
+      // console.log(data)
+
+      var e = document.getElementById('theTable')
+      e.remove()
+      var tabletext = "theTable"
+      var tableclasstext= '"table table-striped table-bordered table-hover"'
+      var widthtext = "60%"
+      var responsive = "table-responsive"
+      var tableid = "tabletable"
+      $("#update").append("<div id=" + tabletext + "><div class="+ responsive + "><table id=" + tableid+ " class= " + tableclasstext + " width = "+ widthtext +"><tr><th>Username</th></tr></table></div></div>")
+
+      $.each(data,function(key,value){
+        $("#tabletable").append("<tr><td>" + key + "</td></tr>")
+    });
+
+  }})});
+  </script>
+
+</html>

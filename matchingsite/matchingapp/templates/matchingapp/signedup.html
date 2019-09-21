@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      &nbsp;<p>
+    Welcome to HobbyLobby, where we will match you to other members depending on the hobbies you like.<br>
+    The more hobbies you have in common with another member the higher their suitability to you will be.
+    <p>
+      <div class="alert alert-success alert-dismissible fade in">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Success!</strong> You can now sign in with your user name <b>{{ username }}</b>
+      </div>
+
+
+
+    <br>
+    <form id="login" action="/login/" method="POST">
+        {% csrf_token %}
+        Username:<br>
+        <input id="username" type="text" name="username"><p>
+        Password:<br>
+        <input id="password" type="password" name="password"><p>
+        <input id="loginbtn" type="submit" value="Login">
+      </form>
+      <p>
+        <a href="/home/" class="button">Homepage</a>
+
+
+
+
+
+  </div>
+  </body>
+
+</html>

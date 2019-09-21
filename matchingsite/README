@@ -1,0 +1,12 @@
+Uses Python 3.5 and Django 2.1
+
+admin username: admin
+admin password: 
+
+Users:
+
+fivehobbies (male)
+fourhobbies (female)
+threehobbies (male)
+twohobbies (female)
+onehobbies (male)
